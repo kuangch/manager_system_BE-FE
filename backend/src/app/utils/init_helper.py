@@ -5,7 +5,9 @@
 # all method is design for init main process
 import logging
 import os
+import subprocess
 import traceback
+import shutil
 
 from config_helper import ConfigHelper
 from global_info import GlobalInfo
@@ -51,19 +53,29 @@ class InitHelper(object):
         """
         logger_main = logging.getLogger(GlobalInfo.logger_main)
         try:
-            GlobalInfo.log_path = app_root_path + os.sep + 'log'
 
             GlobalInfo.persistent_data_path = os.path.dirname(os.path.abspath(app_root_path)) \
                                               + os.sep \
                                               + (GlobalInfo.local_data_dir_name or 'web_frame_flask_serialize_data') \
                                               + os.sep
 
-            # init path
-            if os.path.exists(GlobalInfo.log_path) is False:
-                os.makedirs(GlobalInfo.log_path)
             if os.path.exists(GlobalInfo.persistent_data_path) is False:
                 os.makedirs(GlobalInfo.persistent_data_path)
 
+            try:
+                rawdata_path = '/var/data'
+                if GlobalInfo.rawdata_path and os.path.exists(GlobalInfo.rawdata_path) is True:
+                    rawdata_path = GlobalInfo.rawdata_path
+
+                if os.path.exists(app_root_path + GlobalInfo.rawdata_soft_link_path):
+                    shutil.rmtree(app_root_path + GlobalInfo.rawdata_soft_link_path)
+
+                subprocess.Popen(['ln',
+                                  '-s',
+                                  rawdata_path,
+                                  app_root_path + GlobalInfo.rawdata_soft_link_path])
+            except:
+                logger_main.error('create rawdata soft link failed')
 
             return True
 

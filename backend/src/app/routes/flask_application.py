@@ -32,6 +32,12 @@ app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 app.jinja_env.variable_start_string = "${"
 app.jinja_env.variable_end_string = "}"
 
+
+# init log path
+log_path = app.root_path + os.sep + 'log'
+if os.path.exists(log_path) is False:
+    os.makedirs(log_path)
+
 # init logger config
 logging.config.fileConfig(app.root_path + '/config/logging.conf')
 logger_main = logging.getLogger(GlobalInfo.logger_main)

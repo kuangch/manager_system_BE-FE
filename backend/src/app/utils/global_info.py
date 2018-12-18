@@ -32,5 +32,10 @@ class GlobalInfo():
 
     local_data_dir_name = None
 
+    # 通过软连接结合python服务创建文件服务器
+    rawdata_path = None
+    rawdata_soft_link_path = '/static/rawdata'
+
+
 
 

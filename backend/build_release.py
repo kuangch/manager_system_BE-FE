@@ -79,9 +79,12 @@ def build_local(src_path, dst_path, remove_conf):
     # delete log path
     remove_dir(log_path)
 
-    if path.exists(log_path) is False:
-        print('create path %s ...' % (str(log_path)))
-        os.makedirs(log_path)
+    # if path.exists(log_path) is False:
+    #     print('create path %s ...' % (str(log_path)))
+    #     os.makedirs(log_path)
+
+    # 删除本地调试用的rawdata
+    remove_dir(local_path_dst + '/static/rawdata')
 
     # change version of project
     change_version(local_path_dst + os.sep + 'version_info.py')
@@ -116,6 +119,8 @@ def change_version(version_file_path):
 
 
 def modify_config_file(path):
+
+    rawdata_path = "/var/data"
     cfg_file = open(path, 'r')
     file_object_save = None
     try:
@@ -128,6 +133,10 @@ def modify_config_file(path):
             if re.findall("is_debug = (.*?)", stringread):
                 print('change project form debug to release')
                 stringread='is_debug = false' + os.linesep
+            if re.findall("rawdata_path = (.*?)", stringread):
+                print('change rawdata_path to ' + rawdata_path)
+                stringread='rawdata_path = ' + rawdata_path + os.linesep
+
 
             stringsave=stringsave+stringread
             stringread=cfg_file.readline()
