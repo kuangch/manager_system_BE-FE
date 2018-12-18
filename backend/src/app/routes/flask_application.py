@@ -27,6 +27,7 @@ app = Flask(__name__)
 # config flask object parameters
 app.root_path = "./"
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+# app.config['PERMANENT_SESSION_LIFETIME'] = 10
 
 # Solve the problem of jinja and angularjs conflict of separators
 app.jinja_env.variable_start_string = "${"

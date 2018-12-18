@@ -8,7 +8,7 @@
 
 ======================================="""
 import functools, traceback
-from flask import json
+from flask import json, request
 from routes import logger_main
 from services.cache.data_cache import DataCache
 
@@ -54,3 +54,27 @@ def request_interval_control(time=3):
         return wrapper
 
     return request_interval_control_decorator
+
+
+def check_login(msg='未登录'):
+    """
+    检查是否登录 未登录返回未登录状态
+    """
+    from flask import session, make_response
+
+    def check_login_decorator(f):
+
+        @functools.wraps(f)
+        def wrapper(*args, **kwargs):
+            if 'username' in session:
+                return f(*args, **kwargs)
+
+            response = make_response(json.dumps({
+                'code': 1001,
+                'msg': msg
+            }), 401)
+            return response
+
+        return wrapper
+
+    return check_login_decorator

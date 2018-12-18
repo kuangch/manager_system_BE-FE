@@ -3,11 +3,14 @@
 # Copyright (c) 2016 Dilusense Inc. All Rights Reserved.
 
 # all api is for frontend interface
-from flask import render_template
+import json
 from custom_libs.custom_decorator import check_login
 from flask_application import app
 
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+@app.route('/config')
+def config():
+    return json.dumps({
+        'code': 0,
+        'data': {}
+    })
