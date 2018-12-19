@@ -11,9 +11,15 @@ export default {
     name: "login",
     methods: {
         login: function () {
-            let curr = new Date()
-            localStorage.setItem('time',curr.getTime())
-            window.location.href = `/${packageJson.name}/`
+            this.axios.get('login').then(data=>{
+                console.log(data)
+                if(data.data.code === 0){
+                    window.location.href = `/${packageJson.name}/`
+                }
+            }).catch(()=>{
+                this.$message.info('登陆失败');
+            })
+
         }
     }
 }

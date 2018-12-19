@@ -10,7 +10,7 @@ let devServer = {
     //api代理，开发阶段使用（如用于调试的跨域访问接口）
     proxy: {
         '/dev_test': {
-            target: 'http.js://10.0.1.50:9103/',
+            target: 'http://10.0.1.161:9000/',
             changeOrigin: true,
             pathRewrite: {
                 '^/dev_test': '',     // rewrite path

@@ -59,3 +59,11 @@ def logout():
 
     return response
 
+
+@app.route('/loginVerify')
+@hand_request_exception()
+def login_verify():
+
+    # 仅用于前端获取登录session状态
+    return 'loginVerify'
+

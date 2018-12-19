@@ -12,16 +12,8 @@ export default function (Vue) {
      */
     Vue.$login = Vue.prototype.$login = function () {
 
-        let curr = new Date()
-
-        let last = localStorage.getItem('time')
-
-        if(last){
-            if(curr.getTime() - last < 1000* 100){
-                return true
-            }
-        }
-
-        return false
+        // 路由的登录校验，由于是nginx静态部署，需要一个接口获取登录状态的session
+        Vue.axios.get('loginVerify')
+        return true
     }
 }
