@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+img{border:none;}
+ul,ol{list-style:none;}
+input,select,textarea{outline:none;  background:#FFF;}
+textarea{resize:none;}
+a{text-decoration:none;}
+body{
+    display: flex;
+    min-height: 100vh;
+    height: 100vh;
+    flex-direction: column;
+}
+@media screen and (max-width: 1920px){
+    html,body{
+        font-size:16px;
+    }
+}
+@media screen and (max-width: 1480px){
+    html,body{
+        font-size:14px;
+    }
+}
+@media screen and (max-width: 800px){
+    html,body{
+        font-size:14px;
+    }
+}
+.ovfl-ellipsis{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+}
+.btn-big{
+    display:inline-block;
+    min-width:5rem;
+    padding:0 .2rem;
+    height:2.3rem;
+    line-height:2.3rem;
+    border-radius: 2px;
+    font-size: calc(1rem + 2px);
+    text-align: center;
+    cursor:pointer;
+    outline:none;
+    border:none;
+    box-sizing: content-box;
+}

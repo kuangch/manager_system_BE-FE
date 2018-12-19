@@ -1,0 +1,21 @@
+/* BUTTON*/
+$color_dilu-button-warn: #EB981C;
+
+.dilu-button {
+  color: $color_main_txt;
+}
+.dilu-button-main{
+  @extend .dilu-button;
+  background-color: $color_main_second;
+}
+.dilu-button-main:hover{
+  background-color: $color_main_second - rgb(20,20,20);
+}
+
+.dilu-button-warn{
+  @extend .dilu-button;
+  background-color: $color_dilu-button-warn;
+}
+.dilu-button-warn:hover{
+  background-color: $color_dilu-button-warn - rgb(20,20,20);
+}
