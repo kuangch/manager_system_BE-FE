@@ -12,8 +12,8 @@ import subprocess
 import sys
 import getopt
 
-from os import path
 import time
+from utils.my_constant import MyConstant
 
 
 class globals():
@@ -136,6 +136,9 @@ def modify_config_file(path):
             if re.findall("rawdata_path = (.*?)", stringread):
                 print('change rawdata_path to ' + rawdata_path)
                 stringread='rawdata_path = ' + rawdata_path + os.linesep
+            if re.findall("login_status_lifetime = (.*?)", stringread):
+                print('change login_status_lifetime to ' + str(MyConstant.web_config_login_status_lifetime_default))
+                stringread='login_status_lifetime = ' + str(MyConstant.web_config_login_status_lifetime_default) + os.linesep
 
 
             stringsave=stringsave+stringread

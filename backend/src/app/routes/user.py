@@ -3,9 +3,12 @@
 # Copyright (c) 2016 Dilusense Inc. All Rights Reserved.
 
 # all api is for frontend interface
+import traceback
 from flask import json, make_response, session, request
 from custom_libs.custom_decorator import hand_request_exception
 from flask_application import app, logger_main
+from utils.global_info import GlobalInfo
+from utils.my_constant import MyConstant
 
 
 @app.before_request
@@ -37,9 +40,18 @@ def login():
 
     from datetime import timedelta
 
+    try:
+        login_status_time = int(float(GlobalInfo.login_status_lifetime) * 60)
+    except:
+        # 默认5分钟
+        login_status_time = MyConstant.web_config_login_status_lifetime_default * 60
+        logger_main.error(traceback.format_exc())
+
+    logger_main.debug('登录状态保持时间: %d秒', login_status_time)
+
     # 设置session过期时间
     session.permanent = True
-    app.permanent_session_lifetime = timedelta(seconds=30)
+    app.permanent_session_lifetime = timedelta(seconds=login_status_time)
 
     return response
 

@@ -1,6 +1,7 @@
 #!/usr/bin/env python2.7
 # encoding: utf-8
 # Copyright (c) 2015 Dilusense Inc. All Rights Reserved.
+from utils.my_constant import MyConstant
 
 
 class GlobalInfo():
@@ -35,6 +36,9 @@ class GlobalInfo():
     # 通过软连接结合python服务创建文件服务器
     rawdata_path = None
     rawdata_soft_link_path = '/static/rawdata'
+
+    # 登录状态保持时间（默认5分钟）
+    login_status_lifetime = MyConstant.web_config_login_status_lifetime_default
 
 
 

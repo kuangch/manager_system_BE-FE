@@ -21,6 +21,7 @@ def release_to(dist):
 
 if __name__ == '__main__':
 
-    os.system('python build_release.py --rm-conf=true')
+    # os.system('python build_release.py --rm-conf=true')
+    os.system('python build_release.py')
 
     release_to(os.environ['HOME'] + '/build/'+globals.PROJECT_NAME+'/' + globals.PROJECT_NAME)
