@@ -20,7 +20,7 @@ axios.interceptors.response.use(function (response) {
     if (error.response.status === 401) {
         console.warn('未登录,或者登录失效')
         // 未授权跳转到登录页
-        window.location.href = '/'
+        window.location.href = '/?redirect=true'
     } else {
         return Promise.reject(error);
     }

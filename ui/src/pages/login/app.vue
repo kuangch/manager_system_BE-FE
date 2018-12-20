@@ -9,6 +9,13 @@
 const packageJson = require('../../../package')
 export default {
     name: "login",
+    mounted(){
+        let search = window.location.search
+        if(search && search.substr(1).match(/redirect=true/)){
+            this.$message.warning('未登录或登录失效，请重新登录')
+        }
+
+    },
     methods: {
         login: function () {
             this.axios.get('login').then(data=>{
