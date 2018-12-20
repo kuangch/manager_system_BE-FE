@@ -3,7 +3,7 @@
 # Copyright (c) 2016 Dilusense Inc. All Rights Reserved.
 import datetime
 
-from flask import logging
+import logging
 from utils.file_helper import remove_old_file
 
 from utils.global_info import GlobalInfo

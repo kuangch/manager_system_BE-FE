@@ -7,7 +7,7 @@
 import threading
 from datetime import datetime
 
-from flask import logging
+import logging
 
 from utils.global_info import GlobalInfo
 

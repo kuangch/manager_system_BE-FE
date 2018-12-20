@@ -4,7 +4,7 @@
 import os
 import shutil
 import traceback
-from flask import logging
+import logging
 from utils.global_info import GlobalInfo
 
 

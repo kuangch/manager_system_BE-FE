@@ -4,7 +4,7 @@
 import os
 import pickle
 import traceback
-from flask import logging
+import logging
 from utils.global_info import GlobalInfo
 from utils.serialize_data import SerializeData
 

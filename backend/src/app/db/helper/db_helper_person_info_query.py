@@ -2,7 +2,7 @@
 # encoding: utf-8
 # Copyright (c) 2016 Dilusense Inc. All Rights Reserved.
 import traceback
-from flask import logging
+import logging
 from sqlalchemy import func
 from db.instance_db_connection import DBConnection
 from db.tables.info_portal import InfoPortal

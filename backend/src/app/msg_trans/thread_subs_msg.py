@@ -11,7 +11,7 @@ import sys
 
 import zmq
 
-from flask import logging
+import logging
 
 from msg_trans import TransMsg, MsgTpye, SocketioHelper
 from utils.global_info import GlobalInfo

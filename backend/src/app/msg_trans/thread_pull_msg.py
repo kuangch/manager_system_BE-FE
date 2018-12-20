@@ -9,7 +9,7 @@ import traceback
 import json
 
 import zmq
-from flask import logging
+import logging
 
 from socketio_helper import SocketioHelper
 from trans_msg import TransMsg

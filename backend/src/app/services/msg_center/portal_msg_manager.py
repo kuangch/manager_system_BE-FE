@@ -1,7 +1,7 @@
 #!/usr/bin/env python2.7
 # encoding: utf-8
 # Copyright (c) 2016 Dilusense Inc. All Rights Reserved.
-from flask import logging
+import logging
 from msg_trans import ZMQPort
 from msg_trans.thread_subs_msg import SubsMsgServer
 from services.msg_center.zmq_msg_connections import ZMQConns
